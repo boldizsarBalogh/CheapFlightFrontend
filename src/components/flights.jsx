@@ -34,7 +34,7 @@ class Flights extends Component {
         return (
 
             <div>
-                <button className="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample"
+                <button className="btn btn-success btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
                         aria-expanded="false" aria-controls="collapseExample">
                     All of our flights so far
                 </button>
