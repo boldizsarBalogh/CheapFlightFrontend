@@ -9,28 +9,20 @@ class Flights extends Component {
     constructor(props){
         super(props);
         this.state = {
-            response : []
+            response : props.flights
 
         }
     }
 
-    componentDidMount() {
-        this.getFlights();
-    }
-
-    getFlights() {
-         fetch("http://localhost:8000/")
-             .then(result => result.json())
-             .then((res) => {
-                 this.setState({response : res})
-             })
-             .catch(error => {
-                 console.log(error);});
-
-    }
 
 
     render() {
+        if(this.props.flights === []){
+            return <span></span>
+
+        }
+
+
         return (
 
             <div>
@@ -54,7 +46,7 @@ class Flights extends Component {
                             </tr>
                             </thead>
                             <tbody>
-                                {this.state.response.map(item => <Flight company={item.company} startTown={item.startTown} arriveTown={item.arriveTown} date={item.date} startTime={item.startTime} arriveTime={item.arriveTime} confort={item.confort} price={item.price}/>)}
+                                {this.props.flights.map(item => <Flight company={item.company} startTown={item.startTown} arriveTown={item.arriveTown} date={item.date} startTime={item.startTime} arriveTime={item.arriveTime} confort={item.confort} price={item.price}/>)}
                             </tbody>
                         </table>
                 </div>
