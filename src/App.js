@@ -4,6 +4,8 @@ import './components/navbar'
 import Navbar from "./components/navbar";
 import Alert from "./components/alert";
 import Psearch from "./components/psearch";
+import Search from "./components/search";
+import Background from "./components/background";
 
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
         <Navbar/>
         <Alert/>
         <Psearch/>
+          <Search/>
+          <Background/>
       </div>
     );
   }
