@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import City from "./city";
 
 class Bela extends Component{
 
@@ -57,12 +56,12 @@ class Bela extends Component{
     sendData(event) {
         event.preventDefault()
         const data = "Szia Indi";
-        fetch("http://localhost:8000/search", {
+        fetch("http://localhost:8000/", {
             method:'POST',
             headers: {"City": "application/json"},
             body: JSON.stringify(data)
-    }).then(response => response.json())
-         .then(response => console.log("Success: ", JSON.stringify(response)));
+        }).then(response => response.json())
+            .then(response => console.log("Success: ", JSON.stringify(response)));
         //     .catch(error => console.error("Error: ", error));
     }
 }
