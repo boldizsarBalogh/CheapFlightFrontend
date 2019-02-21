@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './components/navbar'
 import Navbar from "./components/navbar";
 import Alert from "./components/alert";
-import Flights from "./components/flights";
+import Psearch from "./components/psearch";
 
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
       <div className="App">
         <Navbar/>
         <Alert/>
-        <Flights/>
+        <Psearch/>
       </div>
     );
   }
