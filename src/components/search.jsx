@@ -1,7 +1,17 @@
 
 import React, {Component} from 'react';
 
+
 class Search extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+        }
+    }
+
+
+
     render() {
         return <div className="home_search">
             <div className="container">
@@ -10,21 +20,14 @@ class Search extends Component {
                         <div className="home_search_container">
                             <div className="home_search_title">Search for your trip</div>
                             <div className="home_search_content">
-                                <form action="#" className="home_search_form" id="home_search_form">
+                                {/*<form className="home_search_form" id="home_search_form">*/}
                                     <div
                                         className="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                        <input type="text" className="search_input search_input_1" placeholder="City"
-                                               required="required"></input>
-                                        <input type="text" className="search_input search_input_2"
-                                               placeholder="Departure"
-                                               required="required"></input>
-                                        <input type="text" className="search_input search_input_3" placeholder="Arrival"
-                                               required="required"></input>
-                                        <input type="text" className="search_input search_input_4"
-                                               placeholder="Budget" required="required"></input>
-                                            <button className="home_search_button">search</button>
+                                        <select name="fromCity"  onChange={this.props.handleFromChange}>{this.props.cities.map((item)=> <option >{item.name}</option>)}</select>
+                                        <select name="toCity"  onChange={this.props.handleToChange}>{this.props.cities.map((item)=> <option >{item.name}</option>)}</select>
+                                            <button onClick={() => this.props.submitHandler()} className="home_search_button">search</button>
                                     </div>
-                                </form>
+                                {/*</form>*/}
                             </div>
                         </div>
                     </div>
