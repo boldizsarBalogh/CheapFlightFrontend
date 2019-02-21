@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import './components/navbar'
 import Navbar from "./components/navbar";
-import Alert from "./components/alert";
+import Devwarning from "./components/devwarning";
 import Psearch from "./components/psearch";
 import Search from "./components/search";
-import Background from "./components/background";
+// import Background from "./components/background";
 
 
 class App extends Component {
@@ -15,10 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-        <Alert/>
+        <Devwarning/>
         <Psearch/>
-          <Search/>
-          <Background/>
+        <Search/>
       </div>
     );
   }
