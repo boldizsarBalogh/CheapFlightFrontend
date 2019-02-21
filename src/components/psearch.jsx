@@ -38,29 +38,24 @@ class Psearch extends Component{
 
     submitHandler = e => {
         e.preventDefault()
-        console.log(this.state)
-        var data = new FormData();
-        const payload = {
-            fromCity: this.fromCity,
-            toCity: this.toCity
-        };
-        data.append("myjsonkey", JSON.stringify(payload));
-        fetch("http://localhost:8000/", {
-            method: 'POST',
-            body: data
-        }).then(response => console.log("Success: ", JSON.stringify(response)))
+
+        fetch(`http://localhost:8000/search?startTown=${this.state.fromCity}&arriveTown=${this.state.toCity}`, {
+
+
+        }).then(response => response.json())
+            .then(res => console.log(res))
             .catch(error => console.error("Error: ", error));
-    }
+    };
 
     render() {
-        const {fromCity, toCity} = this.state
+        const {fromCity, toCity} = this.state;
         return (
             <form onSubmit={this.submitHandler}>
                 Choose Start:
-                <select name="fromCity" value={fromCity} onChange={this.handleFromChange}>{this.state.response.map((x,y)=> <option key = {y}>{x}</option>)}</select>
+                <select name="fromCity" value={fromCity} onChange={this.handleFromChange}>{this.state.response.map((item)=> <option >{item.name}</option>)}</select>
                 <br/>
                 Choose Arrive:
-                <select name="toCity" value={toCity} onChange={this.handleToChange}>{this.state.response.map((x,y)=> <option key = {y}>{x}</option>)}</select>
+                <select name="toCity" value={toCity} onChange={this.handleToChange}>{this.state.response.map((item)=> <option >{item.name}</option>)}</select>
                 <br/>
                 <button className="btn btn-secondary btn-sm" type="submit">Search</button>
             </form>
