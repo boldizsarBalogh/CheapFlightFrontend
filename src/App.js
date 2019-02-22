@@ -16,8 +16,8 @@ class App extends Component {
 
         this.state = {
             response : [],
-            fromCity: '',
-            toCity: '',
+            fromCity: 'Brussels',
+            toCity: 'Budapest',
             cities: []
 
         }

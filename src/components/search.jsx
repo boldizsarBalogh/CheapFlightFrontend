@@ -23,8 +23,8 @@ class Search extends Component {
                                 {/*<form className="home_search_form" id="home_search_form">*/}
                                     <div
                                         className="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                        <select name="fromCity"  onChange={this.props.handleFromChange}>{this.props.cities.map((item)=> <option >{item.name}</option>)}</select>
-                                        <select name="toCity"  onChange={this.props.handleToChange}>{this.props.cities.map((item)=> <option >{item.name}</option>)}</select>
+                                        <select name="fromCity"   onChange={this.props.handleFromChange}>{this.props.cities.map((item)=> <option selected>{item.name}</option>)}</select>
+                                        <select name="toCity"   onChange={this.props.handleToChange}>{this.props.cities.map((item)=> <option >{item.name}</option>)}</select>
                                             <button onClick={() => this.props.submitHandler()} className="home_search_button">search</button>
                                     </div>
                                 {/*</form>*/}
