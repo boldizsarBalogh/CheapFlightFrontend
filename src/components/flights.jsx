@@ -28,7 +28,7 @@ class Flights extends Component {
             <div>
                 <button className="btn btn-success btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
                         aria-expanded="false" aria-controls="collapseExample">
-                    All of our flights so far
+                  ˇˇˇ Flight          search              results ˇˇˇ
                 </button>
                 <div className="collapse" id="collapseExample">
 
