@@ -45,9 +45,13 @@ class Flights extends Component {
                                 <th scope="col">Price($)</th>
                             </tr>
                             </thead>
-                            <tbody>
+
+                              <tbody>
+
                                 {this.props.flights.map(item => <Flight company={item.company} startTown={item.startTown} arriveTown={item.arriveTown} date={item.date} startTime={item.startTime} arriveTime={item.arriveTime} confort={item.confort} price={item.price}/>)}
-                            </tbody>
+
+                              </tbody>
+
                         </table>
                 </div>
 

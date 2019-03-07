@@ -3,7 +3,8 @@ import './App.css';
 import Devwarning from "./components/devwarning";
 import Search from "./components/search";
 import Flights from "./components/flights";
-import auth0 from 'auth0-js/dist/auth0.min'
+import auth0 from 'auth0-js/dist/auth0.min';
+import Login from './components/login';
 
 
 class App extends Component {
@@ -15,6 +16,10 @@ class App extends Component {
         this.handleFromChange = this.handleFromChange.bind(this);
         this.handleToChange = this.handleToChange.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
+        this.logout = this.logout.bind(this);
+        this.authorize = this.authorize.bind(this);
+        this.localLogin = this.localLogin.bind(this);
+
 
         this.state = {
             response : [],
@@ -35,7 +40,6 @@ class App extends Component {
             loginStatus : document.querySelector('.container h4'),
             loginView : document.getElementById('login-view'),
             homeView : document.getElementById('home-view'),
-            homeViewBtn : document.getElementById('btn-home-view'),
             logoutBtn : document.getElementById('btn-logout'),
             loginBtn : document.getElementById('btn-login')
 
@@ -60,43 +64,28 @@ class App extends Component {
         this.state.accessToken = '';
         this.state.idToken = '';
         this.state.expiresAt = 0;
-        this.displayButtons();
+
     }
-    isAuthenticated() {
-        // Check whether the current time is past the
-        // Access Token's expiry time
-        let expiration = parseInt(this.state.expiresAt) || 0;
-        return localStorage.getItem('isLoggedIn') === 'true' && new Date().getTime() < expiration;
-    }
-    displayButtons() {
-        if (this.isAuthenticated()) {
-            this.state.loginBtn.style.display = 'none';
-            this.state.logoutBtn.style.display = 'inline-block';
-            this.state.loginStatus.innerHTML = 'You are logged in!';
-        } else {
-            this.state.loginBtn.style.display = 'inline-block';
-            this.state.logoutBtn.style.display = 'none';
-            this.state.loginStatus.innerHTML =
-                'You are not logged in! Please log in to continue.';
+    authorize(){
+        if(localStorage.getItem("isLoggedIn") === "true"){
+            alert("Be vagy lépve HÉ!")
+        }else {
+            this.state.webAuth.authorize();
         }
     }
-    handleAuthentication() {
+    handleAuthentication(login) {
         try {
             this.state.webAuth.parseHash(function(err, authResult){
                 console.log(authResult.toString());
                 if (authResult && authResult.accessToken && authResult.idToken) {
                     window.location.hash = '';
-                    this.state.localLogin(authResult);
-                    this.state.loginBtn.style.display = 'none';
-                    this.state.homeView.style.display = 'inline-block';
+                    login(authResult);
                 } else if (err) {
-                    this.state.homeView.style.display = 'inline-block';
                     console.log(err);
                     alert(
                         'Error: ' + err.error + '. Check the console for further details.'
                     );
                 }
-                this.displayButtons();
             });
         }catch(TypeError){
             console.log("not yet authenticated")
@@ -121,13 +110,14 @@ class App extends Component {
                 console.log(error);});
 
     }
+
     handleFromChange = e => {
         this.setState({fromCity: e.target.value})
-    }
+    };
 
     handleToChange = e =>{
         this.setState({toCity: e.target.value})
-    }
+    };
     submitHandler() {
 
         fetch(`http://localhost:8000/search?startTown=${this.state.fromCity}&arriveTown=${this.state.toCity}`, {
@@ -141,9 +131,14 @@ class App extends Component {
             .catch(error => console.error("Error: ", error));
     };
 
+
   render() {
     return (
-      <div className="App">
+      <div className="App" onLoad={this.handleAuthentication(this.localLogin)}>
+        <Login
+        logoutEvent = {this.logout}
+        loginEvent = {this.authorize}
+        />
         <Devwarning/>
         <Search
         submitHandler={this.submitHandler}
