@@ -97,9 +97,7 @@ class App extends Component {
     }
     getCities() {
         fetch("http://localhost:8000/cities",{
-            headers: new Headers({
-                'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
-            })
+
         })
             .then(result => result.json())
             .then((res) => {
@@ -121,14 +119,16 @@ class App extends Component {
     submitHandler() {
 
         fetch(`http://localhost:8000/search?startTown=${this.state.fromCity}&arriveTown=${this.state.toCity}`, {
-
+            headers: new Headers({
+                'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
+            })
 
         }).then(response => response.json())
             .then(res => {
-                console.log(res);
                 this.setState({response:res})
             })
-            .catch(error => console.error("Error: ", error));
+            .catch(error => {
+                alert("not yet authorized")});
     };
 
 
