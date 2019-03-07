@@ -9,7 +9,8 @@ class Flights extends Component {
     constructor(props){
         super(props);
         this.state = {
-            response : props.flights
+            response : props.flights,
+            flights : []
 
         }
     }
@@ -17,9 +18,13 @@ class Flights extends Component {
 
 
     render() {
-        if(this.props.flights === []){
+        if (this.props.flights === []) {
             return <span></span>
+        }
 
+        if(this.props.flights.status === 401){
+            alert("not authorized!!");
+            return <span></span>
         }
 
 
@@ -45,9 +50,11 @@ class Flights extends Component {
                                 <th scope="col">Price($)</th>
                             </tr>
                             </thead>
-                            <tbody>
-                                {this.props.flights.map(item => <Flight company={item.company} startTown={item.startTown} arriveTown={item.arriveTown} date={item.date} startTime={item.startTime} arriveTime={item.arriveTime} confort={item.confort} price={item.price}/>)}
-                            </tbody>
+
+                              <tbody>
+                              {this.props.flights.map(item => <Flight company={item.company} startTown={item.startTown} arriveTown={item.arriveTown} date={item.date} startTime={item.startTime} arriveTime={item.arriveTime} confort={item.confort} price={item.price}/>)}
+                              </tbody>
+
                         </table>
                 </div>
 
