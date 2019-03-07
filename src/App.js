@@ -49,21 +49,34 @@ class App extends Component {
         // Set isLoggedIn flag in localStorage
         localStorage.setItem('isLoggedIn', 'true');
         // Set the time that the access token will expire at
-        this.state.expiresAt = JSON.stringify(
-            authResult.expiresIn * 1000 + new Date().getTime()
-        );
-        this.state.accessToken = authResult.accessToken;
+        this.setState({
+            expiresAt : JSON.stringify(
+                authResult.expiresIn * 1000 + new Date().getTime()
+            )
+        });
+        this.setState({
+            accessToken : authResult.accessToken
+        });
+
         localStorage.setItem("accessToken", this.state.accessToken);
-        this.state.idToken = authResult.idToken;
+        this.setState({
+            idToken : authResult.idToken
+        });
         localStorage.setItem("idToken", this.state.idToken);
     }
     logout() {
         // Remove isLoggedIn flag from localStorage
         localStorage.clear();
         // Remove tokens and expiry time
-        this.state.accessToken = '';
-        this.state.idToken = '';
-        this.state.expiresAt = 0;
+        this.setState({
+            accessToken : ''
+        });
+        this.setState({
+            idToken :''
+        });
+        this.setState({
+            expiresAt : 0
+        });
 
     }
     authorize(){
