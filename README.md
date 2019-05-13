@@ -1,4 +1,26 @@
+## Cheap Flight Frontend
+
+### Introduction
+Cheap Flight frontend is a basic one pager to display the flight data from the Cheap Flight Backend(https://github.com/boldizsarBalogh/CheapFlightBackend)
+application.
+
+## Implemented features
+* Implemented the Bootsrap 4 library with its animation
+* The user can select the departure/destination cities from the drop down
+menu and send the request to the corresponding Back end APIs.
+* Implemented basic authentication with Auth0
+    * The search function is accessible only after logging in with a google account.
+
+## Future plans
+* Design the page based on the best practices of frontend development
+* Remove the hardcoded api addresses and use a config field instead
+
+
+    
+## Install notes
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Node package manager NPM is required to start this project. You can find more information about installation at https://www.npmjs.com/get-npm
 
 ## Available Scripts
 
@@ -37,32 +59,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
