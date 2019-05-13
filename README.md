@@ -5,7 +5,7 @@ Cheap Flight frontend is a basic one pager to display the flight data from the C
 application.
 
 ## Implemented features
-* Implemented the Bootsrap 4 library with its animation
+* Implemented the Bootsrap 4 library with its animations
 * The user can select the departure/destination cities from the drop down
 menu and send the request to the corresponding Back end APIs.
 * Implemented basic authentication with Auth0
