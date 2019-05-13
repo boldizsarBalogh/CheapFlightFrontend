@@ -6,7 +6,6 @@ import Flights from "./components/flights";
 import auth0 from 'auth0-js/dist/auth0.min';
 import Login from './components/login';
 
-
 class App extends Component {
 
 
