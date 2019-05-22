@@ -18,6 +18,15 @@ class Flights extends Component {
 
 
     render() {
+        if(this.props.loading === true){
+            return(
+                <>
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </>
+            )
+        }
         if (this.props.flights.status === 401) {
             alert("status code 401 not authorized!!");
             return <span></span>
@@ -54,7 +63,6 @@ class Flights extends Component {
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             );
         } else {

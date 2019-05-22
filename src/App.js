@@ -40,7 +40,8 @@ class App extends Component {
             loginView : document.getElementById('login-view'),
             homeView : document.getElementById('home-view'),
             logoutBtn : document.getElementById('btn-logout'),
-            loginBtn : document.getElementById('btn-login')
+            loginBtn : document.getElementById('btn-login'),
+            loading : false
 
         }
     }
@@ -132,7 +133,7 @@ class App extends Component {
         this.setState({toCity: e.target.value})
     };
     submitHandler() {
-
+        this.setState({loading : true})
         fetch(`http://localhost:8000/search?startTown=${this.state.fromCity}&arriveTown=${this.state.toCity}`, {
             headers: new Headers({
                 'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
@@ -141,8 +142,10 @@ class App extends Component {
         }).then(response => response.json())
             .then(res => {
                 this.setState({response:res})
+                this.setState({loading: false})
             })
             .catch(error => {
+                this.setState({loading: false})
                 alert("not yet authorized")});
     };
 
@@ -163,6 +166,7 @@ class App extends Component {
         />
         <Flights
         flights = {this.state.response}
+        loading = {this.state.loading}
         />
       </div>
     );
