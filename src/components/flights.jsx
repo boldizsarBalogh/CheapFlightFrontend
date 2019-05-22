@@ -27,6 +27,10 @@ class Flights extends Component {
                 </>
             )
         }
+        if (this.props.flights.status === 500){
+            alert("status code 500 internal server error :(");
+            return <span></span>
+        }
         if (this.props.flights.status === 401) {
             alert("status code 401 not authorized!!");
             return <span></span>

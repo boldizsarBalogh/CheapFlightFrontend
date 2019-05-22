@@ -133,7 +133,11 @@ class App extends Component {
         this.setState({toCity: e.target.value})
     };
     submitHandler() {
-        this.setState({loading : true})
+        if(this.state.fromCity === this.state.toCity){
+            alert("Please select 2 different cities");
+            return
+        }
+        this.setState({loading : true});
         fetch(`http://localhost:8000/search?startTown=${this.state.fromCity}&arriveTown=${this.state.toCity}`, {
             headers: new Headers({
                 'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
