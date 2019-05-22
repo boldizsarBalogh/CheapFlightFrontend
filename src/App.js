@@ -76,6 +76,9 @@ class App extends Component {
         this.setState({
             expiresAt : 0
         });
+        this.setState({
+            response : []
+        })
 
     }
     authorize(){
